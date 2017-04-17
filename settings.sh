@@ -3,7 +3,7 @@
 # set the base path to your Android NDK (or export NDK to environment)
 
 if [[ "x$NDK_BASE" == "x" ]]; then
-    NDK_BASE=/opt/android-ndk
+    NDK_BASE=/usr/local/Cellar/android-ndk-r10e/r10e
     echo "No NDK_BASE set, using $NDK_BASE"
 fi
 
@@ -17,9 +17,9 @@ else
 fi
 
 # Android NDK setup
-NDK_PLATFORM_LEVEL=16
+NDK_PLATFORM_LEVEL=21
 NDK_ABI=arm
-NDK_COMPILER_VERSION=4.6
+NDK_COMPILER_VERSION=4.9
 NDK_SYSROOT=$NDK_BASE/platforms/android-$NDK_PLATFORM_LEVEL/arch-$NDK_ABI
 NDK_UNAME=`uname -s | tr '[A-Z]' '[a-z]'`
 if [ $NDK_ABI = "x86" ]; then
@@ -33,6 +33,8 @@ NDK_TOOLCHAIN_BASE=$NDK_BASE/toolchains/$NDK_TOOLCHAIN/prebuilt/$NDK_UNAME-$NDK_
 
 CC="$NDK_TOOLCHAIN_BASE/bin/$HOST-gcc --sysroot=$NDK_SYSROOT"
 LD=$NDK_TOOLCHAIN_BASE/bin/$HOST-ld
+RANLIB=$NDK_TOOLCHAIN_BASE/bin/$HOST-ranlib
+AR=$NDK_TOOLCHAIN_BASE/bin/$HOST-ar
 STRIP=$NDK_TOOLCHAIN_BASE/bin/$HOST-strip
 
 # i use only a small number of formats - set this to 0 if you want everything.
