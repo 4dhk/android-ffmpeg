@@ -42,6 +42,7 @@ $DEBUG_FLAG \
 --enable-parsers \
 --enable-protocols \
 --enable-filters \
+--enable-libfreetype \
 --disable-avresample \
 \
 --disable-indevs \
